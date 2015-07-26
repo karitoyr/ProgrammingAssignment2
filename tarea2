@@ -1,0 +1,34 @@
+## El siguiente es un par de funciones que calculan el caché y 
+## Inversa de una matriz.
+
+## Esta función crea un objeto especial de "matriz"
+## Que puede almacenar en caché su inversa.
+
+makeCacheMatrix  <-  función ( mtx  =  matriz ()) {
+    inversa  <-  NULL
+    set  <-  función ( x ) {
+        mtx  << -  x ;
+        inversa  << -  NULL ;
+    }
+    llegar  <-  función () retorno ( MTX );
+    setinv  <-  función ( inv ) inversa  << -  inv ;
+    getinv  <-  la función () retorno ( inversa );
+    retorno ( lista ( conjunto  =  conjunto , get  =  get , setinv  =  setinv , getinv  =  getinv ))
+}
+
+## Esta función calcula la inversa de la especial
+## "Matriz" que devuelve `makeCacheMatrix` arriba. Si la inversa tiene
+## Ya se ha calculado (y la matriz no ha cambiado), a continuación,
+## `CacheSolve` debe recuperar la inversa de la caché.
+
+cacheSolve  <-  función ( mtx , ... ) {
+    inversa  <-  mtx $ getinv ()
+    si ( ! is.null ( inversa )) {
+        mensaje ( " Primeros datos en caché ... " )
+        retorno ( inversa )
+    }
+    datos  <-  mtx $ get ()
+    invserse  <- resolver ( datos , ... )
+    mtx $ setinv ( inversa )
+    retorno ( inversa )
+}
